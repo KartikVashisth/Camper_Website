@@ -1,0 +1,21 @@
+.thumbnail img{
+  width : 100%;
+}
+.thumbnail{
+  padding : 0;
+}
+.thumbnail .caption-full{
+  padding : 9px;
+}
+.user_name{
+  padding-top : 15px;
+  color : black;
+}
+#map{
+  height: 400px;
+  width: 100%;
+}
+
+.checked {
+  color: orange;
+}

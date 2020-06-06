@@ -1,0 +1,39 @@
+<%- include('../partials/header') %>
+
+<div class = 'container'>
+  <div class = 'row'>
+    <div class = 'col-md-4'>
+      <h1 style="text-align: center;"><%=user.username%></h1>
+      <div class = 'thumbnail'>
+        <img class = 'img-responsive' src = '<%= user.avatar %>'>
+        <div class = "list-group">
+          <li class = "list-group-item" ><a href="mailto:<%= user.email %>"><%= user.email %></a></li>
+          <li class = "list-group-item"> 
+            <label>Name:</label> <%= user.first_name %> <%= user.last_name %>
+          </li>
+          <% if(currentUser.username != user.username){ %>
+            <li class = "list-group-item"><a href='/follow/<%= user._id %>' class = 'btn btn-primary btn-sm'>FOLLOW</a></li>
+          <% } %>
+        </div>    
+      </div>
+    </div>
+    <div class = 'col-md-8'>
+      <h1 style="text-align: center;"><%= user.first_name %>'s Campgrounds</h1>
+      <% camps.forEach(function(campground){ %>
+        <div class="col-md-3 col-sm-6">
+          <div class="thumbnail">
+            <img src = "<%= campground.image %>">
+            <div class = "caption">
+              <h4><%= campground.name %></h4>
+            </div>
+            <p>
+              <a href="/campgrounds/<%= campground.slug %>", class="btn btn-primary btn-xs pull-right">More Info</a>
+            </p>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

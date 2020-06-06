@@ -1,0 +1,47 @@
+<%- include("../partials/header") %>
+
+<div class = "container">
+  <header class="jumbotron">
+    <div class = "container" style="text-align: center;">
+      <h1>Welcome to Camper</h1>
+      <p>Our hand picked campgrounds from all over the world</p>
+      <p>
+        <a class="btn btn-primary btn-lg"href="/campgrounds/new">Add new Campground</a>
+      </p>
+      <p>
+        <form action = "/campgrounds" method = "GET" class = "form-inline">
+          <div class = "form-group">
+            <input type = "text" name = "search" class = "form-control" placeholder = "Campground search..">
+            <input type = "submit" class = "btn btn-default" value = "Search">
+          </div>
+        </form>
+      </p>
+    </div>
+  </header>
+  
+  <div class = "row text-center" style="display:flex; flex-wrap:wrap;">
+    <% if(noMatch.length > 1){ %>
+      <h3 style="padding-left: 350px; color: red;"><%=noMatch%></h3>
+    <% } %>  
+
+    <% campgrounds.forEach(function(campground){ %>
+      <div class="col-md-3 col-sm-6">
+        <div class="thumbnail">
+          <img src = "<%= campground.image %>">
+          <div class = "caption">
+            <h4><%= campground.name %></h4>
+            <div>
+              <span class="badge label-primary"><i class="fas fa-thumbs-up"></i> <%= campground.likes.length %></span>
+            </div>
+          </div>
+          <p>
+            <a href="/campgrounds/<%= campground.slug %>", class="btn btn-primary">More Info</a>
+          </p>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+
+<%- include("../partials/footer") %>
